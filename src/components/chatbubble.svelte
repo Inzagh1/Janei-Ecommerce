@@ -1,24 +1,48 @@
 <script>
+  import { fade } from 'svelte/transition';
+  import { onMount } from 'svelte';
+
   let ordermessage = false;
   let cancelmessage = false;
   let deliverymessage = false;
+  let message = '';
+  let index = 0;
 
-  
+
+  const text = `"Hey there! 👋 Have a question or need assistance?
+                    We're here to help! Feel free to drop us a message anytime.
+                      We love hearing from you! 💌"`;
+
+  const typeMessage = () => {
+    if (index < text.length) {
+      message += text[index];
+      index++;
+      setTimeout(typeMessage, 40); 
+     } 
+  };
+ 
   function order() {
     ordermessage = true;
     cancelmessage = false;
     deliverymessage = false;
+    
   }
-  function cancel() {
-    cancelmessage = true;
+  function cancel() { 
     ordermessage = false;
+    cancelmessage = true;
     deliverymessage = false;
   }
   function delivery() {
-    deliverymessage = true;
-    cancelmessage = false;
     ordermessage = false;
+    cancelmessage = false;
+    deliverymessage = true;
   }
+
+
+  onMount(() => {
+    typeMessage();
+  });
+
 
   
 </script>
@@ -43,7 +67,7 @@
         </div>
 
         <div tabindex="0" class="  dropdown-content z-[1] menu p-2 shadow bg-green-900 rounded-lg w-[345px] h-[450px] p-2">
-          <div class="duration-200 message h-[400px] bg-slate-300 rounded-md pb-20 overflow-y-auto   overflow-hidden    ">
+          <div class="duration-200 message h-[400px] bg-slate-200 rounded-md pb-20 overflow-y-auto   overflow-hidden    ">
             <div class="">
                 <div class="h-10  bg-slate-900 w-auto text-center p-2 sticky top-0 z-50  ">
                   <span class="text-slate-100 text-[15px]  "> Message Us </span>
@@ -51,9 +75,8 @@
 
                 <!--Janie response-->
                 <div class="chat chat-start">   
-                  <div class="chat-bubble bg-green-950 text-[13px] ">"Hey there! 👋 Have a question or need assistance?
-                    We're here to help! Feel free to drop us a message anytime.
-                      We love hearing from you! 💌"
+                  <div class="chat-bubble bg-green-950 text-[13px] " transition:fade="{{ duration: 200 }}">
+                    <span class="text-[13px]">{message}</span>
                   </div>
                 </div>
 
@@ -101,9 +124,9 @@
                   </div>           
                 </div>    
                </div>
-               {/if}
+              
 
-               {#if cancelmessage}
+               {:else if cancelmessage}
              
                <div class="chat chat-end">
                 <div class="chat-bubble">How to cancel?</div>
@@ -138,9 +161,9 @@
                 </div>    
                </div>
       
-               {/if}
+           
 
-               {#if deliverymessage}
+               {:else if deliverymessage}
                <div class="chat chat-end">
                 <div class="chat-bubble">When is the delivery?</div>
               </div>

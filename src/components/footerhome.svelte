@@ -1,5 +1,5 @@
 <footer>
-    <div class="footer bg-[#1F1F1F] h-52   w-auto p-3 bottom-0 sticky " >
+    <div class="footer bg-[#1F1F1F]  h-52   w-auto p-3 bottom-0 sticky " >
         <div class="w-full ">
             <nav class="h-14 w-[80%] mx-auto border-b-4  ">
                 <ul class="flex gap-5 justify-center m-3">
