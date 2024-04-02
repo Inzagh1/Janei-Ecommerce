@@ -29,10 +29,10 @@
                 <img class="" alt="Tailwind CSS Navbar component" src="/usser.png" />
               </div>
             </div>
-            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-lg w-52">
-              <li><a class="text-white hover:text-yellow-600">Profile</a></li>
-              <li><a class="text-white hover:text-yellow-600">Orders</a></li>
-              <li><a class="text-white hover:text-yellow-600">Logout</a></li>
+            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3  p-2 shadow bg-[#1F1F1F]  rounded-lg w-52">
+              <li><a class="text-white hover:text-yellow-600 " >Profile</a></li>
+              <li><a class="text-white hover:text-yellow-600 ">Orders</a></li>
+              <li><a class="text-white hover:text-yellow-600 ">Logout</a></li>
             </ul>
           </div>
         </div>
